@@ -21,9 +21,10 @@ const InventoryItem = ({ level, rarityColor, icon, selected }) => (
 
 export default function CharacterScreen() {
   const [invTab, setInvTab] = useState('item');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="character-screen new-layout">
+    <div className={`character-screen new-layout ${isExpanded ? 'inventory-expanded' : ''}`}>
       {/* Upper Panel: Hero & Equipped */}
       <div className="hero-overview-panel">
         <div className="hero-equipment-layout">
@@ -67,7 +68,11 @@ export default function CharacterScreen() {
         <div className="inventory-header">
           <h3 className="inventory-title">Inventory</h3>
           <div className="inventory-actions">
+            <button className="fantasy-button small-btn" style={{display: 'flex', alignItems: 'center', gap: '4px'}}><span>🔍</span> Search</button>
             <button className="fantasy-button small-btn">Filter</button>
+            <button className="fantasy-button small-btn" onClick={() => setIsExpanded(!isExpanded)} title="Toggle Inventory Size">
+              {isExpanded ? '🔽' : '🔼'}
+            </button>
           </div>
         </div>
 
