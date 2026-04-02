@@ -138,6 +138,32 @@
   height: 30px;
 }
 
+.node-minor-square {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.node-minor-square:hover {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}
+
+.node-minor-triangle {
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  clip-path: polygon(50% 5%, 0% 100%, 100% 100%);
+  background-color: #3c465a;
+}
+.node-minor-triangle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  background-color: #1a1e28;
+  clip-path: polygon(50% 5%, 0% 100%, 100% 100%);
+  z-index: -1;
+}
+
 .node-notable {
   width: 54px;
   height: 54px;
