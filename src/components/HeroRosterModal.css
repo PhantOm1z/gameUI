@@ -1,0 +1,142 @@
+.roster-overlay {
+  z-index: 200;
+}
+
+.roster-panel {
+  width: 95%;
+  max-width: 440px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: #e2d2b5; /* Default parchment */
+}
+
+.roster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 2px solid rgba(92, 74, 37, 0.3);
+  padding-bottom: 8px;
+}
+
+.roster-title {
+  font-family: var(--font-heading);
+  color: #5c4a25;
+  font-size: 20px;
+}
+
+.roster-filter {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #3a2b1f;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.roster-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.roster-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.roster-grid::-webkit-scrollbar-thumb {
+  background: #8e734c;
+  border-radius: 3px;
+}
+
+.hero-card {
+  position: relative;
+  aspect-ratio: 1 / 1.6;
+  background: #1a1510;
+  border: 2px solid #5c4a25;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  transition: transform 0.15s;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.6);
+}
+
+.hero-card.unowned {
+  filter: grayscale(80%) brightness(0.7);
+}
+
+.hero-card-art {
+  flex: 1;
+  background: linear-gradient(to bottom, #d4b572, #8e734c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+
+.hero-card-info {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 4px;
+  text-align: center;
+}
+
+.hero-card-name {
+  font-size: 10px;
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.not-acquired {
+  font-size: 8px;
+  color: #c44747;
+  text-transform: uppercase;
+}
+
+.class-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 8px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  padding: 2px 0;
+  text-shadow: 1px 1px 1px #000;
+  z-index: 2;
+}
+
+.class-banner.common { background: #6b7280; }
+.class-banner.rare { background: #3b82f6; }
+.class-banner.epic { background: #a855f7; }
+.class-banner.legendary { background: #eab308; }
+.class-banner.mythic { background: #ef4444; }

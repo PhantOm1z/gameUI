@@ -146,8 +146,19 @@
 
 .tower-slots {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   justify-content: center;
+}
+
+.tower-slots .equip-slot-square {
+  width: 50px;
+  height: 50px;
+  font-size: 26px;
+}
+
+.tower-slots .equip-level {
+  font-size: 10px;
+  padding: 2px 0;
 }
 
 

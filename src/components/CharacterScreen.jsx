@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './CharacterScreen.css';
 import heroImg from '../assets/hero.png';
+import HeroRosterModal, { ALL_HEROES } from './HeroRosterModal';
+import HeroDetailModal from './HeroDetailModal';
 
 const EquipSlot = ({ label, level, rarityColor, icon }) => (
   <div className="equip-box">
@@ -22,6 +24,19 @@ const InventoryItem = ({ level, rarityColor, icon, selected }) => (
 export default function CharacterScreen() {
   const [invTab, setInvTab] = useState('item');
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
+  const [selectedHero, setSelectedHero] = useState(null);
+  const [activeHero, setActiveHero] = useState(ALL_HEROES[0]);
+
+  const handleSelectHeroFromRoster = (hero) => {
+    setSelectedHero(hero);
+    setActiveModal('details');
+  };
+
+  const handleConfirmHero = (hero) => {
+    setActiveHero(hero);
+    setActiveModal(null);
+  };
 
   return (
     <div className={`character-screen new-layout ${isExpanded ? 'inventory-expanded' : ''}`}>
@@ -35,6 +50,9 @@ export default function CharacterScreen() {
           </div>
 
           <div className="hero-center-display">
+            <div style={{ fontSize: '14px', color: '#f4ecdf', fontWeight: 'bold', marginBottom: '8px', fontFamily: 'var(--font-heading)' }}>
+              {activeHero.name}
+            </div>
             <div className="preset-tabs">
               <span className="preset active">1</span>
               <span className="preset">2</span>
@@ -42,6 +60,13 @@ export default function CharacterScreen() {
               <span className="preset">4</span>
             </div>
             <img src={heroImg} alt="Hero" className="hero-model-small" />
+            <button 
+              className="fantasy-button small-btn" 
+              style={{ padding: '2px 8px', fontSize: '10px', height: '24px' }}
+              onClick={() => setActiveModal('roster')}
+            >
+              🔄 Change Hero
+            </button>
           </div>
 
           <div className="side-slots right">
@@ -123,6 +148,21 @@ export default function CharacterScreen() {
           <button className={`inv-tab ${invTab === 'tower' ? 'active' : ''}`} onClick={() => setInvTab('tower')}>Tower</button>
         </div>
       </div>
+
+      {activeModal === 'roster' && (
+        <HeroRosterModal 
+          onClose={() => setActiveModal(null)} 
+          onSelectHero={handleSelectHeroFromRoster} 
+        />
+      )}
+
+      {activeModal === 'details' && (
+        <HeroDetailModal 
+          hero={selectedHero} 
+          onConfirm={handleConfirmHero} 
+          onCancel={() => setActiveModal('roster')} 
+        />
+      )}
     </div>
   );
 }
