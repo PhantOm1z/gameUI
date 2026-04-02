@@ -1,368 +1,429 @@
-.shop-screen {
+/* Anime Gacha Style Shop CSS (AFK Arena inspired) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Nunito:wght@700;800&display=swap');
+
+.afk-shop-screen {
   width: 100%;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #2b3a4a; /* Deep cloudy blue background */
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
-}
-
-.shop-content-area {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 200px; /* Big padding for floating elements at bottom */
-}
-
-/* Scrollbar styling */
-.shop-content-area::-webkit-scrollbar {
-  width: 0px; 
-}
-
-/* --- Headers --- */
-.shop-banner {
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-  position: relative;
+  font-family: 'Nunito', sans-serif;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-.voyager-banner {
-  background: linear-gradient(135deg, #1d4ed8, #be185d);
-  /* Would be an image in production */
-  box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
-}
-
-.limited-banner {
-  background: linear-gradient(135deg, #b45309, #451a03);
-}
-
-.banner-title {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.banner-timer {
-  font-size: 12px;
-  font-weight: 700;
-  margin-top: 4px;
-}
-
-/* --- Grid View (Voyager) --- */
-.shop-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  padding: 0 12px;
-}
-
-.shop-card {
-  position: relative;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #a3b8cc;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.grid-card {
-  background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 100%); /* Celestial blue */
-  padding: 12px 8px 8px 8px;
-  align-items: center;
-}
-
-.hot-ribbon {
+.afk-shop-screen::before {
+  content: "";
   position: absolute;
-  top: -2px; left: -2px;
-  background: linear-gradient(90deg, #ef4444, #f59e0b);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 12px;
-  border-radius: 8px 0 8px 0;
-  border: 1px solid #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  transform: rotate(-10deg);
-  transform-origin: left bottom;
-  z-index: 2;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(43, 62, 80, 0.4);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.card-image-area {
-  height: 80px;
-  width: 100%;
+.afk-top-resources {
+  position: relative;
+  z-index: 10;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.box-icon {
-  font-size: 50px;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
-}
-
-.card-rewards {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  margin-top: 8px;
-  width: 100%;
-}
-
-.reward-slot {
-  background: linear-gradient(180deg, #475569, #1e293b);
-  border: 1px solid #94a3b8;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 9px;
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 24px;
-  flex: 1;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.5);
-  white-space: nowrap;
-}
-
-.card-limit {
-  font-size: 10px;
-  color: #3b82f6;
-  font-weight: 700;
-  margin: 8px 0;
-  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
-}
-
-.price-btn {
-  width: 100%;
-  height: 32px;
-  font-size: 14px;
-  background: linear-gradient(180deg, #e5e7eb, #9ca3af);
-  color: #1f2937;
-  border: 1px solid #fff;
-  border-radius: 16px;
-  text-shadow: none;
-}
-
-/* --- List View (Limited Offers) --- */
-.shop-list {
-  display: flex;
-  flex-direction: column;
   gap: 12px;
-  padding: 0 12px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.4);
 }
-
-.list-card {
-  flex-direction: row;
-  background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 100%); /* Gold/Sand */
-  border-color: #fef08a;
-  height: 110px;
-}
-
-.list-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.box-icon-large {
-  font-size: 60px;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
-  margin-top: -10px;
-}
-
-.list-timer {
-  position: absolute;
-  bottom: 8px; left: 8px;
-  font-size: 9px;
+.resource-pill {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #745b46;
+  border-radius: 12px;
+  padding: 2px 12px;
+  font-size: 14px;
+  font-weight: bold;
   color: #fff;
-  background: rgba(0,0,0,0.5);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.list-right {
-  flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  padding: 12px;
+  align-items: center;
   gap: 6px;
 }
 
-.list-right .card-rewards {
-  justify-content: flex-end;
-  margin-top: 0;
+.afk-shop-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 200px;
+}
+.afk-shop-content::-webkit-scrollbar { width: 0; }
+
+.afk-scroll-view {
+  border: 2px solid #eddbb5; 
+  border-radius: 0 0 12px 12px;
+  margin: 0 12px;
+  background: rgba(25, 42, 60, 0.85);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  overflow: hidden;
 }
 
-.list-right .reward-slot {
-  flex: 0 0 32px;
-  height: 32px;
-  font-size: 8px;
+/* Banner */
+.afk-banner {
+  position: relative;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(82,130,175,0.7), rgba(20,40,70,0.9));
+  overflow: hidden;
+}
+.limited-banner {
+  background: linear-gradient(135deg, rgba(160, 80, 150, 0.7), rgba(50, 20, 60, 0.9));
+}
+.diamonds-banner {
+  background: linear-gradient(135deg, rgba(80, 180, 220, 0.7), rgba(20, 40, 80, 0.9));
+}
+.centered-overlay {
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.banner-character-img {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 250px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 20px rgba(255, 239, 138, 0.4));
+}
+
+.banner-text-overlay {
+  position: absolute;
+  top: 30%;
+  left: 16px;
+  display: flex;
   flex-direction: column;
 }
 
-.list-right .card-limit {
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+.sparkle-title {
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
   margin: 0;
+  background: linear-gradient(to bottom, #ffffff, #e1ddec);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+  letter-spacing: 2px;
+}
+.gold-gradient {
+  background: linear-gradient(to bottom, #fff5d1, #ffcc33);
+  -webkit-background-clip: text;
+}
+.blue-gradient {
+  background: linear-gradient(to bottom, #e0faff, #33b5e5);
+  -webkit-background-clip: text;
 }
 
-.list-right .price-btn {
-  width: 100px;
-  background: linear-gradient(180deg, #fde68a, #d97706);
-  border-color: #fff;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+.timer-text {
+  font-size: 14px;
+  font-weight: 800;
+  color: #eeddbb;
+  margin-top: 4px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
 }
 
+/* Grid for Bundles */
+.afk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 12px;
+}
+.diamonds-grid {
+  grid-template-columns: 1fr 1fr; /* 2 columns for diamonds */
+}
 
-/* --- Floating Sub Nav (Center) --- */
-.shop-sub-nav {
+.afk-card {
+  position: relative;
+  background: linear-gradient(180deg, #daeffc 0%, #b8dcf2 100%);
+  border: 4px solid #daeffc;
+  border-radius: 12px;
+  padding: 2px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.afk-card::before {
+  content: "";
   position: absolute;
-  bottom: 80px; /* Just above categories */
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1px solid #71b4e0;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.diamond-card {
+  background: linear-gradient(180deg, #e3eef5 0%, #c8d8e8 100%);
+  border-color: #e3eef5;
+}
+
+.afk-hot-ribbon {
+  position: absolute;
+  top: -4px; left: -8px;
+  background: linear-gradient(to right, #ff4c4c, #ff9e22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 14px 2px 6px;
+  transform: rotate(-15deg);
+  border-radius: 4px;
+  border: 1px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  z-index: 5;
+}
+.best-ribbon {
+  background: linear-gradient(to right, #ba55d3, #da70d6);
+}
+
+.afk-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.4) 10px,
+    rgba(255,255,255,0.2) 10px,
+    rgba(255,255,255,0.2) 20px
+  );
+  border-radius: 8px;
+  padding: 8px 4px;
+  height: 100%;
+}
+
+.chest-image {
+  width: 90%;
+  max-width: 80px;
+  height: auto;
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.diamond-pack-title {
+  font-size: 12px;
+  color: #1f3b58;
+  font-weight: 900;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.diamond-image {
+  width: 90%;
+  max-width: 90px;
+  height: auto;
+  filter: drop-shadow(0 6px 6px rgba(0,0,0,0.4));
+  margin-bottom: 4px;
+}
+
+.diamond-amt-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.1);
+  padding: 2px 12px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+}
+.d-icon { font-size: 16px; }
+.d-amt { font-size: 14px; font-weight: 900; color: #1a4f8b; }
+
+.diamond-bonus {
+  font-size: 11px;
+  color: #d15124;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.rewards-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.reward-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, #e4eff8, #accce5);
+  border: 1px solid #94b9d6;
+  border-radius: 4px;
+  padding: 2px;
+  width: 32px;
+  box-shadow: inset 0 0 4px #fff, 0 2px 2px rgba(0,0,0,0.2);
+}
+.r-icon { font-size: 14px; }
+.r-amt { font-size: 9px; color: #1f3b58; font-weight: 900; }
+
+.limit-text {
+  font-size: 11px;
+  color: #4a6682;
+  font-weight: 900;
+  margin: 6px 0;
+}
+
+.afk-price-btn {
+  width: 90%;
+  padding: 4px 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #8c4c3b;
+  background: linear-gradient(180deg, #ffefe0, #ffcaa3);
+  border: 2px solid #fcb68a;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+  margin-top: auto;
+}
+.afk-price-btn:active { transform: scale(0.95); }
+.free-btn {
+  background: linear-gradient(180deg, #eaffd8, #a8df65);
+  border-color: #86c440;
+  color: #2b5e08;
+}
+
+/* LIMITED LIST CARDS */
+.limited-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.limited-list-card {
+  display: flex;
+  height: 110px;
+  background: linear-gradient(90deg, #e0caf5 0%, #c4a1e9 100%);
+  border: 3px solid #f6e6ff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.llc-left {
+  flex: 0 0 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.4);
+  border-radius: 8px 0 0 8px;
+}
+.llc-chest-image {
+  width: 70px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+.llc-timer {
+  position: absolute;
+  bottom: 4px;
+  background: rgba(0,0,0,0.7);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.llc-right {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.llc-title {
+  margin: 0;
+  font-size: 14px;
+  color: #3b1d5c;
+  font-weight: 900;
+}
+.llc-rewards {
+  justify-content: flex-start;
+  margin: 4px 0;
+}
+.llc-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 2px;
+}
+.llc-limit {
+  margin: 0;
+  color: #5b3e7a;
+}
+.llc-btn {
+  width: 90px;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+/* Sub Navigation (Floating Arch) */
+.afk-sub-nav {
+  position: absolute;
+  bottom: 40px; /* Dropped lower since bottom nav is gone */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
   gap: 12px;
-  width: 100%;
   z-index: 10;
 }
 
-.sub-nav-item {
+.nav-arch {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
   transition: transform 0.2s;
   width: 70px;
 }
+.nav-arch.active { transform: translateY(-10px) scale(1.1); }
 
-.sub-nav-item.active {
-  transform: translateY(-8px) scale(1.1);
-  z-index: 2;
-}
-
-.sub-nav-portrait {
-  width: 48px;
-  height: 64px;
-  border-radius: 24px 24px 0 0;
-  border: 2px solid var(--color-border);
-  border-bottom: none;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  font-size: 30px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+.arch-bg {
+  width: 65px;
+  height: 85px;
+  border-radius: 35px 35px 0 0;
+  background-color: #555;
   background-size: cover;
   background-position: center;
+  border: 3px solid #dbbf8a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
+.arch-dark { background: linear-gradient(180deg, #473a2e, #1a1614); }
+.arch-pale { background: linear-gradient(180deg, #d3c4a8, #867965); }
 
-.bg-red { background: linear-gradient(180deg, #fca5a5, #dc2626); }
-.bg-dark { background: linear-gradient(180deg, #9ca3af, #374151); }
-.bg-light { background: linear-gradient(180deg, #fef08a, #d97706); }
-
-.sub-nav-item span {
-  font-size: 9px;
-  color: var(--color-text-light);
-  background: rgba(26, 21, 16, 0.9);
-  padding: 4px 6px;
-  border: 1px solid var(--color-border);
+.arch-label {
+  position: absolute;
+  bottom: -8px;
+  font-size: 11px;
+  line-height: 1.1;
+  text-align: center;
+  background: rgba(0,0,0,0.9);
   border-radius: 4px;
-  text-align: center;
-  width: 100%;
-  line-height: 1.1;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
-  font-family: var(--font-heading);
+  padding: 3px 6px;
+  border: 1px solid #756247;
+  color: #cdba99;
+  white-space: nowrap;
+}
+.nav-arch.active .arch-label {
+  color: #fff;
+  border-color: #dbbf8a;
+  background: #2b1f14;
+}
+.text-gold {
+  color: #f7e096 !important;
 }
 
-.sub-nav-item.active span {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-
-/* --- Bottom Categories --- */
-.shop-categories {
+.red-notification {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 24px 12px 24px;
-  background: linear-gradient(0deg, rgba(15,23,42,1) 0%, transparent 100%);
-  z-index: 5;
-}
-
-.shop-cat-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  opacity: 0.7;
-  transition: all 0.2s;
-}
-
-.shop-cat-btn.active {
-  opacity: 1;
-  transform: translateY(-4px);
-}
-
-.cat-icon {
-  font-size: 36px;
-  filter: drop-shadow(0 4px 4px rgba(0,0,0,0.8));
-  margin-bottom: -4px;
-}
-
-.cat-label {
-  font-size: 10px;
-  color: var(--color-text-light);
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.1;
-  text-shadow: 0 2px 2px #000;
-}
-
-.shop-cat-btn.active .cat-label {
-  color: #fcd34d;
-}
-
-.red-dot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  background: var(--color-danger);
+  top: 0; right: 0;
+  width: 14px; height: 14px;
+  background: red;
   border-radius: 50%;
-  border: 1px solid #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-.placeholder-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  color: var(--color-text-light);
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(255,0,0,0.8);
 }
