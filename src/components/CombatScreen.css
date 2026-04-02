@@ -1,0 +1,213 @@
+.combat-screen {
+  width: 100%;
+  height: 100%;
+  background: #1a2216; /* Dark battle ground */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.combat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+  color: var(--color-text-light);
+  font-family: var(--font-heading);
+  z-index: 10;
+}
+
+.back-btn {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #5c4a25;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.wave-info, .base-hp {
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.combat-arena {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  perspective: 1000px; /* 3D effect feeling */
+}
+
+.lane {
+  height: 60px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 2px dashed rgba(167, 139, 83, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.lane.active {
+  background: rgba(167, 139, 83, 0.1);
+  border-bottom: 2px solid rgba(167, 139, 83, 0.6);
+}
+
+.hero-avatar, .enemy {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.hero-avatar {
+  background: #a78b53;
+  border: 2px solid #fff;
+}
+
+.enemy {
+  background: #723434;
+  border: 2px solid #000;
+}
+
+.enemy.slime { background: #34724b; }
+
+.combat-ui {
+  height: 220px;
+  background: linear-gradient(to top, rgba(16, 12, 9, 0.95) 60%, transparent);
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 16px 16px;
+  position: relative;
+}
+
+.energy-indicator {
+  position: absolute;
+  top: -30px;
+  left: 16px;
+  z-index: 10;
+}
+
+.energy-orb {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, #aae4ff, #4371b6 50%, #172c54 100%);
+  border: 3px solid #b8a685;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  box-shadow: 0 0 15px rgba(67, 113, 182, 0.5), inset 0 -4px 10px rgba(0,0,0,0.5);
+}
+
+.current-energy {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.card-hand {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 20px 0 10px 0;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.card-hand::-webkit-scrollbar {
+  display: none;
+}
+
+.combat-card {
+  min-width: 110px;
+  height: 150px;
+  background: var(--color-panel);
+  border: 3px solid #8e734c;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
+  cursor: grab;
+}
+
+.combat-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-cost {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 24px;
+  height: 24px;
+  background: #39527a;
+  border: 2px solid #a78b53;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-art {
+  height: 60px;
+  background: #d4b572; /* Default art bg */
+  border-bottom: 2px solid #8e734c;
+}
+
+.card-art.magic { background: #b2684b; }
+.card-art.melee { background: #737c86; }
+.card-art.holy { background: #e6dfa8; }
+
+.card-info {
+  flex: 1;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.card-tags {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.tag {
+  background: #5c4a25;
+  color: #f4ecdf;
+  font-size: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.card-desc {
+  font-size: 9px;
+  text-align: center;
+  color: #3a2b1f;
+  margin-top: auto;
+}
