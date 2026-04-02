@@ -83,6 +83,11 @@
   align-items: center;
   width: 100%;
 }
+.limited-overlay {
+  left: 40% !important;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
 
 .banner-character-img {
   position: absolute;
@@ -91,6 +96,15 @@
   width: 250px;
   opacity: 0.9;
   filter: drop-shadow(0 0 20px rgba(255, 239, 138, 0.4));
+}
+
+.merchant-img {
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  width: 180px;
+  opacity: 0.95;
+  filter: drop-shadow(-4px 4px 12px rgba(0,0,0,0.6));
 }
 
 .banner-text-overlay {
@@ -392,9 +406,20 @@
   background-position: center;
   border: 3px solid #dbbf8a;
   box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.arch-transparent-icon {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  margin-top: 10%;
 }
 .arch-dark { background: linear-gradient(180deg, #473a2e, #1a1614); }
-.arch-pale { background: linear-gradient(180deg, #d3c4a8, #867965); }
+.arch-pale { background: linear-gradient(180deg, #faf5eb, #d3c4a8); }
 
 .arch-label {
   position: absolute;

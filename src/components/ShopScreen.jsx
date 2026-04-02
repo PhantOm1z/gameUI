@@ -8,6 +8,7 @@ import chestBasic from '../assets/chest_basic.png';
 import chestEpic from '../assets/chest_epic.png';
 import diamondsSmall from '../assets/diamonds_small.png';
 import diamondsLarge from '../assets/diamonds_large.png';
+import merchantChar from '../assets/merchant_char.png';
 
 // Mock Data
 const VOYAGER_BUNDLES = [
@@ -86,7 +87,8 @@ export default function ShopScreen() {
         {activeSubTab === 'limited' && (
           <div className="afk-scroll-view limited-view">
             <div className="afk-banner limited-banner">
-              <div className="banner-text-overlay centered-overlay">
+              <img src={merchantChar} alt="Merchant" className="merchant-img" />
+              <div className="banner-text-overlay centered-overlay limited-overlay">
                 <h1 className="sparkle-title gold-gradient">✦ LIMITED OFFERS ✦</h1>
                 <p className="timer-text">Refreshes specific deals daily!</p>
               </div>
@@ -168,12 +170,16 @@ export default function ShopScreen() {
           <span className="arch-label">Voyager's<br/>Set</span>
         </div>
         <div className={`nav-arch ${activeSubTab === 'limited' ? 'active' : ''}`} onClick={() => setActiveSubTab('limited')}>
-          <div className="arch-bg arch-dark" style={{backgroundImage: `url(${chestEpic})`, backgroundSize: '70%', backgroundRepeat: 'no-repeat'}}></div>
+          <div className="arch-bg arch-pale">
+            <img src={chestEpic} className="arch-transparent-icon" alt="offers" />
+          </div>
           <span className="arch-label">Limited<br/>Offers</span>
           <div className="red-notification"></div>
         </div>
         <div className={`nav-arch ${activeSubTab === 'diamonds' ? 'active' : ''}`} onClick={() => setActiveSubTab('diamonds')}>
-          <div className="arch-bg arch-pale" style={{backgroundImage: `url(${diamondsLarge})`, backgroundSize: '80%', backgroundRepeat: 'no-repeat'}}></div>
+          <div className="arch-bg arch-pale">
+            <img src={diamondsLarge} className="arch-transparent-icon" alt="diamonds" />
+          </div>
           <span className="arch-label text-gold">Diamonds<br/>Shop</span>
         </div>
       </div>
