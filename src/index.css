@@ -1,26 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
 
 :root {
-  /* Fantasy Medieval Theme Variables */
-  --color-primary: #a78b53; /* Gold accent */
-  --color-primary-dark: #7a6335;
-  --color-bg: #2d241c; /* Deep wood/earth tone */
-  --color-panel: #e2d2b5; /* Parchment */
-  --color-panel-dark: #b8a685;
-  --color-text-dark: #3a2b1f;
-  --color-text-light: #f4ecdf;
-  --color-magic: #6b8cce; /* Soft blue magic */
-  --color-magic-glow: rgba(107, 140, 206, 0.6);
-  --color-danger: #c44747;
-  --color-success: #52a85e;
+  /* Classic Fantasy Medieval Theme Variables */
+  --color-primary: #deb887; /* Burlywood Gold */
+  --color-primary-dark: #a78b53; /* Dark Gold/Brass */
+  --color-bg: #1a1510; /* Very dark brown wood */
+  --color-panel: #251c14; /* Dark wood panel */
+  --color-panel-dark: #150f0a; /* Deep shadow */
+  --color-text-dark: #3a2b1f; /* Dark brown ink */
+  --color-text-light: #f4ecdf; /* Parchment white */
+  --color-magic: #c4d7fa; /* Soft magic blue */
+  --color-danger: #9f3030;
+  --color-success: #438f5a;
+  --color-border: #5c4a25; /* Brown/Gold trim */
 
   --font-heading: 'Cinzel', serif;
   --font-body: 'Inter', sans-serif;
 
-  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 15px var(--color-magic-glow);
-  --border-radius: 12px;
-  --border-gold: 2px solid var(--color-primary);
+  --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.5);
+  --border-radius: 8px; /* Classic rounded edges */
 }
 
 * {
@@ -31,26 +29,25 @@
 
 body {
   font-family: var(--font-body);
-  background-color: #110e0c; /* Very dark background outside the mobile specific area */
+  background-color: #0d0a08;
   color: var(--color-text-light);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  overflow: hidden; /* Prevent scrolling outside the mobile area */
+  overflow: hidden;
 }
 
-/* Mobile Constraint Container */
 #root {
   width: 100%;
-  max-width: 480px; /* Mobile phone width */
+  max-width: 480px;
   height: 100vh;
   max-height: 900px;
   background-color: var(--color-bg);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 1);
   display: flex;
   flex-direction: column;
 }
@@ -60,58 +57,53 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Common UI Elements */
+/* Classic Medieval Button */
 .fantasy-button {
-  background: linear-gradient(to bottom, #d4b572, var(--color-primary-dark));
-  border: 2px solid #eddcaf;
-  border-radius: 8px;
-  color: var(--color-text-dark);
+  background: linear-gradient(180deg, #5c4a25 0%, #3a2b1f 100%);
+  border: 2px solid #deb887;
+  border-radius: var(--border-radius);
+  color: #deb887;
   font-family: var(--font-heading);
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 0 #5c4a25, 0 5px 10px rgba(0,0,0,0.5);
-  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.1);
+  transition: all 0.2s;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .fantasy-button:active {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 #5c4a25, 0 1px 5px rgba(0,0,0,0.5);
+  transform: translateY(2px);
+  box-shadow: 0 0px 2px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #3a2b1f 0%, #251c14 100%);
 }
 
 .fantasy-button.magic-glow {
-  box-shadow: 0 4px 0 #5c4a25, 0 5px 10px rgba(0,0,0,0.5), var(--shadow-glow);
-  border-color: #c4d7fa;
+  border-color: #f4ecdf;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 0 10px rgba(222, 184, 135, 0.4);
+  color: #f4ecdf;
 }
 
-.fantasy-button.magic-glow:active {
-  box-shadow: 0 0 0 #5c4a25, 0 1px 5px rgba(0,0,0,0.5), 0 0 5px var(--color-magic-glow);
-}
-
+/* Classic Parchment Panel */
 .parchment-panel {
-  background: var(--color-panel);
-  border: 4px solid #8e734c;
+  background: #e2d2b5;
+  background-image: radial-gradient(circle, #f4ecdf 0%, #e2d2b5 80%, #c4b08f 100%);
+  border: 2px solid var(--color-border);
   border-radius: var(--border-radius);
   color: var(--color-text-dark);
-  box-shadow: inset 0 0 30px rgba(110, 85, 52, 0.3), var(--shadow-soft);
+  box-shadow: var(--shadow-soft);
   position: relative;
 }
 
-/* Add corner decorations */
 .parchment-panel::before,
 .parchment-panel::after {
-  content: '';
+  content: '✦';
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #5c4a25; /* Dark rivet */
-  border-radius: 50%;
+  font-size: 14px;
+  color: var(--color-border);
 }
-.parchment-panel::before { top: 4px; left: 4px; box-shadow: calc(100% - 8px) 0 #5c4a25; }
-/* To do bottom corners properly we usually need inner spans, but simple styling is okay for now */
+.parchment-panel::before { top: -6px; left: -6px; }
+.parchment-panel::after { bottom: -6px; right: -6px; }
 
-/* Utilities */
 .text-gold { color: var(--color-primary); }
 .text-magic { color: var(--color-magic); }
 .flex-center { display: flex; align-items: center; justify-content: center; }

@@ -12,15 +12,15 @@ export default function HomeScreen({ onOpenRewards, onStartCombat }) {
         
         {/* Nodes overlaying the map (approximate positions via CSS for UI demonstration) */}
         <div className="map-path">
-          <div className="node completed" style={{ bottom: '15%', left: '30%' }}>1</div>
-          <div className="node completed" style={{ bottom: '25%', left: '50%' }}>2</div>
-          <div className="node completed" style={{ bottom: '40%', left: '60%' }}>3</div>
-          <div className="node active" style={{ bottom: '50%', left: '40%' }}>4
+          <div className="node completed" style={{ bottom: '15%', left: '30%' }}><span>1</span></div>
+          <div className="node completed" style={{ bottom: '25%', left: '50%' }}><span>2</span></div>
+          <div className="node completed" style={{ bottom: '40%', left: '60%' }}><span>3</span></div>
+          <div className="node active" style={{ bottom: '50%', left: '40%' }}><span>4</span>
             <div className="node-pulse"></div>
-            <div className="node-avatar-indicator">⚔️</div>
+            <div className="node-avatar-indicator counter-rotate"><span>⚔️</span></div>
           </div>
-          <div className="node locked" style={{ bottom: '65%', left: '50%' }}>5</div>
-          <div className="node locked" style={{ bottom: '80%', left: '40%' }}>6</div>
+          <div className="node locked" style={{ bottom: '65%', left: '50%' }}><span>5</span></div>
+          <div className="node locked" style={{ bottom: '80%', left: '40%' }}><span>6</span></div>
         </div>
 
       </div>

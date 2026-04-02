@@ -1,0 +1,47 @@
+.diamond-dust-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(var(--scale)) rotate(45deg); opacity: 0; }
+  20% { opacity: 0.8; box-shadow: 0 0 10px var(--color-primary); }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-150px) scale(var(--scale)) rotate(45deg); opacity: 0; }
+}
+
+.dust-particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: #fff;
+  box-shadow: 0 0 4px var(--color-primary);
+  animation: floatUp infinite linear;
+}
+
+/* Watermark Overlay */
+.magical-watermark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150vh; height: 150vh;
+  /* Complex concentric circles for astrology / magic crest vibe */
+  background: 
+    radial-gradient(circle, transparent 20%, rgba(139, 211, 230, 0.05) 21%, transparent 22%),
+    radial-gradient(circle, transparent 35%, rgba(139, 211, 230, 0.03) 36%, transparent 37%),
+    radial-gradient(circle, transparent 40%, rgba(139, 211, 230, 0.06) 42%, transparent 43%),
+    /* Crossed lines to form star/cross patterns */
+    linear-gradient(45deg, transparent 49.8%, rgba(139, 211, 230, 0.03) 50%, transparent 50.2%),
+    linear-gradient(-45deg, transparent 49.8%, rgba(139, 211, 230, 0.03) 50%, transparent 50.2%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: rotateWatermark 120s infinite linear;
+}
+
+@keyframes rotateWatermark {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}

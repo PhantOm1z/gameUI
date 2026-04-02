@@ -4,6 +4,7 @@ import HomeScreen from './components/HomeScreen';
 import CharacterScreen from './components/CharacterScreen';
 import CombatScreen from './components/CombatScreen';
 import RewardsPopup from './components/RewardsPopup';
+import ShopScreen from './components/ShopScreen';
 
 // Simple SVG Icons
 const ShopIcon = () => (<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>);
@@ -40,7 +41,7 @@ function App() {
       </header>
 
       <main className="main-content">
-        {currentTab === 'shop' && <div className="placeholder-screen" style={{display:'flex',justifyContent:'center',alignItems:'center',height:'100%'}}><h2>Shop (Coming Soon)</h2></div>}
+        {currentTab === 'shop' && <ShopScreen />}
         {currentTab === 'equip' && <CharacterScreen />}
         {currentTab === 'base' && <HomeScreen onOpenRewards={() => setShowRewards(true)} onStartCombat={() => setCurrentTab('combat')} />}
         {currentTab === 'growth' && <div className="placeholder-screen" style={{display:'flex',justifyContent:'center',alignItems:'center',height:'100%'}}><h2>Growth (Coming Soon)</h2></div>}
